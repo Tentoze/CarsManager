@@ -1,9 +1,23 @@
 package com.example.firstspring.car;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
-
+@Entity
+@Table
 public class Car {
+    @Id
+    @SequenceGenerator(
+            name = "car_sequence",
+            sequenceName = "car_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "car_sequence"
+    )
+
+
     private Long id;
     private String Model;
     private String Brand;
@@ -29,6 +43,10 @@ public class Car {
         this.weight = weight;
         this.maxSpeed = maxSpeed;
         this.yearOfProduction = yearOfProduction;
+    }
+
+    public Car() {
+
     }
 
     public Long getId() {
