@@ -2,8 +2,9 @@ package com.example.firstspring.car;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +23,9 @@ public class CarService {
     }
 
     public void addNewCar(Car car) {
-        Optional<Car> carBrand = carRepository.findCarByBrand(car.getBrand());
-        Optional<Car> carModel = carRepository.findCarByModel(car.getModel());
-        if(carBrand.isPresent()&&carModel.isPresent()){
+        Car carBrand = carRepository.findCarByBrand(car.getBrand());
+        Car carModel = carRepository.findCarByModel(car.getModel());
+        if(carBrand!=null&&carModel!=null){
             throw new IllegalStateException("There is the same car in repository");
         }
         System.out.println(car);
@@ -37,7 +38,7 @@ public class CarService {
         carRepository.findById(carId);
     }
 
-   /* @Transactional
+    @Transactional
     public void updateCar(Long carId, int year, int weight, int maxspeed) {
         Car car = carRepository.findById(carId).orElseThrow(()-> new IllegalStateException("There is no car with this id"));
         if(year > 1900|| year <= LocalDate.now().getDayOfYear()){
@@ -49,6 +50,6 @@ public class CarService {
         if(maxspeed>20){
             car.setMaxSpeed(maxspeed);
         }
-    }*/
+    }
 }
 

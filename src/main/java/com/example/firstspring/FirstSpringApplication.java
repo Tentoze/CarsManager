@@ -2,13 +2,11 @@ package com.example.firstspring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.example.firstspring.car.Car;
 
-import java.util.List;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {
+        "com.example.firstspring.car"
+})
 public class FirstSpringApplication {
 
     public static void main(String[] args) {

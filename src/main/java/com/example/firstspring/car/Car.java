@@ -1,8 +1,5 @@
 package com.example.firstspring.car;
-
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Date;
 @Entity
 @Table
 public class Car {
@@ -17,18 +14,17 @@ public class Car {
             generator = "car_sequence"
     )
 
-
     private Long id;
-    private String Model;
-    private String Brand;
+    private String model;
+    private String brand;
     private int HP;
     private int weight;
     private int maxSpeed;
     private int yearOfProduction;
 
-    public Car(String model, String brand, int HP, int weight, int maxSpeed, int yearOfProduction) {
-        Model = model;
-        Brand = brand;
+    public Car(String model, String Brand, int HP, int weight, int maxSpeed, int yearOfProduction) {
+        this.model = model;
+        this.brand = Brand;
         this.HP = HP;
         this.weight = weight;
         this.maxSpeed = maxSpeed;
@@ -37,8 +33,8 @@ public class Car {
 
     public Car(Long id, String model, String brand, int HP, int weight, int maxSpeed, int yearOfProduction) {
         this.id = id;
-        Model = model;
-        Brand = brand;
+        this.model = model;
+        this.brand = brand;
         this.HP = HP;
         this.weight = weight;
         this.maxSpeed = maxSpeed;
@@ -58,19 +54,19 @@ public class Car {
     }
 
     public String getModel() {
-        return Model;
+        return model;
     }
 
     public void setModel(String model) {
-        Model = model;
+        model = model;
     }
 
     public String getBrand() {
-        return Brand;
+        return brand;
     }
 
     public void setBrand(String brand) {
-        Brand = brand;
+        brand = brand;
     }
 
     public int getHP() {
